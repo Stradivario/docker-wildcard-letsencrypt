@@ -26,7 +26,13 @@ else
     CERTBOT_DOMAINS="-d *.${DOMAIN_NAME} -d ${DOMAIN_NAME}"
 fi
 
-if [ "$MODE" = "staging" ]
+if [ "$MODE" = "test-cert" ]
+then
+    ACME_SERVER="https://acme-staging-v02.api.letsencrypt.org/directory"
+    ARGS="--test-cert"
+fi
+
+if [ "$MODE" = "dry-run" ]
 then
     ACME_SERVER="https://acme-staging-v02.api.letsencrypt.org/directory"
     ARGS="--dry-run"
